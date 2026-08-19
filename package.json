@@ -1,0 +1,17 @@
+{
+  "name": "worst-login-page",
+  "version": "1.0.0",
+  "description": "A creative way to design the worst login page",
+  "keywords": [
+    "login-page",
+    "worst",
+    "ui/ux"
+  ],
+  "license": "ISC",
+  "author": "oreocapybara",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server ./src"
+  }
+}
