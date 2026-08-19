@@ -4,20 +4,34 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Oreo's Capybara</title>
+	<title>Login | Oreo's Challenge</title>
+	<link rel="stylesheet" href="global.css">
 </head>
 
 <body>
 	<div id="content">
-		<div id="left-container"></div>
-		<div id="right-container">
-			<form action="">
-				<input type="text" placeholder="oreodoescode@up.edu.ph" required>
-				<input type="password" placeholder="Enter your password" required>
-				<button type="submit">Log In</button>
-			</form>
+		<div id="left-container">
+			<h1>Oreo's Login Page</h1>
+			<p>The input fields will fly across the screen.</p>
+			<p>The goal is to tap the element at the right moment so Oreo the capybara can grab them!</p>
+			<p>Miss the timing? The element will fall and break</p>
+			<button>Got it</button>
 		</div>
+
+		<div id="right-container">
+			<div id="capybara">
+				<div id="capybara-body">Capybara</div>
+				<div id="grabbed-inputs"></div>
+			</div>
+
+			<div id="gamezone"></div>
+		</div>
+
+		<div id="oops-text" class="hidden">Oops!</div>
+		<button id="submit" class="hidden">Log In</button>
 	</div>
+	<script src="./script.js"></script>
+
 </body>
 
 </html>
