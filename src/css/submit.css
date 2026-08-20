@@ -1,0 +1,35 @@
+/* --- Submit Button --- */
+#submit {
+	position: fixed;
+	padding: 8px 64px;
+	font-size: 1rem;
+	font-weight: bold;
+	background: #4a9c5e;
+	color: white;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	z-index: 900;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	animation: blob-pulse 1s ease-in-out infinite;
+}
+
+#submit:hover {
+	background: #3a7c4e;
+}
+#submit:focus, #submit:focus-visible{
+	outline: solid 4px var(--brand);
+	outline-offset: 2px	;
+}
+
+#submit:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+@keyframes blob-pulse {
+	0%, 100% { transform: scaleX(1) scaleY(1); box-shadow: 0 4px 12px rgba(74, 156, 94, 0.3); }
+	25% { transform: scaleX(1.08) scaleY(0.92); box-shadow: 0 5px 16px rgba(74, 156, 94, 0.4); }
+	50% { transform: scaleX(0.94) scaleY(1.08); box-shadow: 0 6px 20px rgba(74, 156, 94, 0.6); }
+	75% { transform: scaleX(1.05) scaleY(0.95); box-shadow: 0 5px 16px rgba(74, 156, 94, 0.4); }
+}

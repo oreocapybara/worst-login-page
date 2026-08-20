@@ -4,20 +4,47 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Oreo's Capybara</title>
+	<title>Login | Oreo's Challenge</title>
+	<link rel="stylesheet" href="./css/base.css">
+	<link rel="stylesheet" href="./css/left-container.css">
+	<link rel="stylesheet" href="./css/capybara.css">
+	<link rel="stylesheet" href="./css/gamezone.css">
+	<link rel="stylesheet" href="./css/submit.css">
+	<link rel="icon" type="image/png+xml" href="./assets/oreo_icon.png">
 </head>
 
 <body>
 	<div id="content">
-		<div id="left-container"></div>
-		<div id="right-container">
-			<form action="">
-				<input type="text" placeholder="oreodoescode@up.edu.ph" required>
-				<input type="password" placeholder="Enter your password" required>
-				<button type="submit">Log In</button>
-			</form>
+		<div id="left-container">
+			<h1>Oreo's Login Page</h1>
+			<p>Input fields fly across the screen.</p>
+			<p>Tap at the right moment. Oreo will grab them!</p>
+			<p>Miss? They will fall.</p>
+
+			<p>Login as <strong><em>sparcsbounty@web.dev.com</em></strong> with password
+				<strong><em>!oreoxsparcs</em></strong></p>
+			<button>Got it</button>
+
+			<footer>
+				2026 @ <cite><a href="https://github.com/oreocapybara" target="_blank">oreocapybara</a></cite>
+			</footer>
 		</div>
+
+		<div id="right-container">
+			<div id="capybara">
+				<div id="capybara-body">
+					<div id="grabbed-inputs"></div>
+				</div>
+			</div>
+
+			<div id="gamezone"></div>
+		</div>
+
+		<div id="oops-text" class="hidden">Skill Issue!</div>
+		<button id="submit" class="hidden">Log In</button>
 	</div>
+	<script type="module" src="./js/main.js"></script>
+
 </body>
 
 </html>

@@ -1,0 +1,175 @@
+/* --- Right Container (Game Area) --- */
+#right-container {
+	flex: 2;
+	max-width: 60%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--secondary);
+	border-radius: 16px 0 0 16px;
+}
+
+#right-container::before {
+	content: "";
+	position: absolute;
+	inset: -50%;
+	width: 200%;
+	height: 200%;
+	background: url("../assets/oreo.svg") repeat;
+	background-size: 136px 136px;
+	opacity: 0.06;
+	pointer-events: none;
+	z-index: 0;
+	transform: rotate(36deg);
+}
+
+/* --- Capybara --- */
+#capybara {
+	position: relative;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#capybara-body {
+	position: relative;
+	background: url("../assets/Capybara_default.svg") no-repeat center / contain;
+	width: 480px;
+	height: 654px;
+	border-radius: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+#grabbed-inputs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 90%;
+
+	input{
+		flex: 1;
+		border: solid 4px black;
+		border-radius: 16px;
+		padding: 16px 16px;
+		font-size:16px;
+		
+	}
+
+	input:active, input:focus-visible{
+		border: solid 4px var(--brand);
+		outline-offset: 2px;
+		outline: solid 4px var(--secondary);
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	}
+
+	input:user-invalid{
+		border-color: indianred;
+		box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+	}
+
+	input:user-valid:focus{
+      border-color: mediumseagreen;
+      box-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+  }
+
+
+
+
+}
+
+
+/* --- Capybara Active State --- */
+#capybara-body.capybara-active {
+	background: url("../assets/Capybara_active.svg") no-repeat center / contain;
+}
+
+/* --- Capybara Entrance Animation --- */
+@keyframes capy-entrance {
+	0% {
+		transform: translateY(-120vh);
+		opacity: 0;
+	}
+	8% {
+		opacity: 1;
+	}
+	50% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	62% {
+		transform: translateY(-40px);
+		opacity: 1;
+	}
+	74% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	82% {
+		transform: translateY(-15px);
+		opacity: 1;
+	}
+	90% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	95% {
+		transform: translateY(-5px);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.capy-hidden {
+	opacity: 0;
+	transform: translateY(-120vh);
+}
+
+.capy-entrance {
+	animation: capy-entrance 1.2s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+/* --- Capybara Animations --- */
+@keyframes capy-shake {
+	0%, 100% { transform: translateY(-20%) rotate(0deg); }
+	25% { transform: translateY(-20%) rotate(-3deg); }
+	75% { transform: translateY(-20%) rotate(3deg); }
+}
+
+.capy-shake {
+	animation: capy-shake 10ms ease;
+}
+
+@keyframes capy-wiggle {
+	0%, 100% { transform: translateY(-20%) scale(1); }
+	50% { transform: translateY(-20%) scale(1.05); }
+}
+
+.capy-wiggle {
+	animation: capy-wiggle 0.3s ease;
+}
+
+@keyframes capy-bounce {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-5px); }
+}
+
+.capy-bouncing {
+	animation: capy-bounce 2s ease-in-out infinite;
+}
