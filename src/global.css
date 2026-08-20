@@ -37,13 +37,15 @@ body {
 
 			
 
-			#capybara-body{
+
+			#capybara-body {
 				background-color: rosybrown;
 				width: 200px;
 				height: 260px;
 				text-align: center;
 			}
 		}
+
 		#gamezone {
 			position: absolute;
 			inset: 0;
@@ -52,9 +54,16 @@ body {
 			pointer-events: none;
 
 			.moving-input {
+				position: fixed;
 				pointer-events: auto;
 			}
 		}
+
+		#moving-input {
+			padding: 8px 16px;
+			border-radius: 8px;
+		}
+		
 
 	}
 
