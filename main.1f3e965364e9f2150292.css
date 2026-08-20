@@ -223,6 +223,16 @@ body {
 	background: url(/worst-login-page/4c241fbd13adea15fc0f.svg) no-repeat center / contain;
 }
 
+/* Preload active SVG so there's no flash on first switch */
+#capybara-body::after {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	background: url(/worst-login-page/4c241fbd13adea15fc0f.svg) no-repeat;
+}
+
 /* --- Capybara Entrance Animation --- */
 @keyframes capy-entrance {
 	0% {
