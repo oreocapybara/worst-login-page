@@ -1,0 +1,29 @@
+:root {
+	--primary: #0A2947;
+	--secondary: #F3E4C9;
+	--text: #D3D4C0;
+	--brand: #8B5E3C;
+}
+
+body {
+	height: 100dvh;
+	width: 100dvw;
+	overflow: hidden;
+	font-family: 'Segoe UI', sans-serif;
+	background: var(--primary);
+	margin: 0;
+}
+
+#content {
+	height: 100%;
+	display: flex;
+	gap: 32px;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+
+/* --- Utility --- */
+.hidden {
+	display: none !important;
+}
