@@ -1,11 +1,13 @@
 import { state } from './state.js';
+import successSoundUrl from '../assets/sound/input2.mp3';
+import failSoundUrl from '../assets/sound/error.wav';
 
 // Registry to avoid circular imports
 const phaseStarters = {};
 
 // Sound effects
-const successSound = new Audio('./assets/sound/input2.mp3');
-const failSound = new Audio('./assets/sound/error.wav');
+const successSound = new Audio(successSoundUrl);
+const failSound = new Audio(failSoundUrl);
 
 export function registerPhaseStarter(name, fn) {
 	phaseStarters[name] = fn;
