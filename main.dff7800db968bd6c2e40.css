@@ -279,7 +279,7 @@ body {
 }
 
 .capy-shake {
-	animation: capy-shake 10ms ease;
+	animation: capy-shake 0.4s ease;
 }
 
 @keyframes capy-wiggle {
