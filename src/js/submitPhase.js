@@ -1,8 +1,11 @@
 import { state } from './state.js';
 import { registerPhaseStarter } from './grab.js';
+import { showHomeView } from './homeView.js';
+import blobSoundUrl from '../assets/sound/blob.ogg';
+import failSoundUrl from '../assets/sound/error.wav';
 
-const blobSound = new Audio('./assets/sound/blob.ogg');
-const failSound = new Audio('./assets/sound/error.wav');
+const blobSound = new Audio(blobSoundUrl);
+const failSound = new Audio(failSoundUrl);
 
 export function startSubmitPhase() {
 	state.phase = "submit";
@@ -71,7 +74,7 @@ export function startSubmitPhase() {
 			cancelAnimationFrame(submitAnimId);
 			blobSound.currentTime = 0;
 			blobSound.play();
-			setTimeout(() => { window.location.href = "home.html"; }, 200);
+			setTimeout(() => { showHomeView(); }, 200);
 		} else {
 			failSound.currentTime = 0;
 			failSound.play();
@@ -89,7 +92,7 @@ export function startSubmitPhase() {
 				cancelAnimationFrame(submitAnimId);
 				blobSound.currentTime = 0;
 				blobSound.play();
-				setTimeout(() => { window.location.href = "home.html"; }, 200);
+				setTimeout(() => { showHomeView(); }, 200);
 			} else {
 				failSound.currentTime = 0;
 				failSound.play();
@@ -108,6 +111,7 @@ export function startSubmitPhase() {
 
 		// Show oops text
 		const oopsText = document.getElementById("oops-text");
+		if (!oopsText) return;
 		oopsText.classList.remove("hidden");
 		oopsText.style.animation = "none";
 		oopsText.offsetHeight; // Force reflow

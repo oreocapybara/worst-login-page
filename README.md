@@ -22,19 +22,23 @@ worst-login-page
 │   │   └── sound/
 │   ├── css/
 │   ├── js/
-│   ├── index.html
-│   └── home.html
-├── README.md
-└── package.json
+│   └── template.html
+├── webpack.config.cjs
+├── package.json
+└── README.md
 ```
 
 # Stack
 - **HTML**
 - **JS** (ES Modules)
 - **CSS**
+- **Webpack 5** (bundler)
 
 # Prerequisites
-- **live-server** (`npm i -g live-server`)
+- **Node.js** (v16+)
+- **npm**
 
 # Scripts
-`npm run dev` — runs live-server at the src/ directory
+- `npm run dev` — starts webpack-dev-server on port 3000
+- `npm run build` — builds production bundle to `dist/`
+- `npm run deploy` — builds and deploys to GitHub Pages

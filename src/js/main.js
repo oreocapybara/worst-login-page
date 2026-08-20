@@ -4,6 +4,9 @@ import { startEmailPhase } from './emailPhase.js';
 import './passwordPhase.js';
 import './submitPhase.js';
 
+import bgmUrl from '../assets/sound/bgm.mp3';
+import blobUrl from '../assets/sound/blob.ogg';
+
 // --- Capybara Entrance Animation ---
 const capybaraEl = document.getElementById("capybara");
 capybaraEl.classList.add("capy-hidden");
@@ -20,11 +23,16 @@ capybaraEl.addEventListener("animationend", (e) => {
 });
 
 // --- BGM setup (autoplay with fallback) ---
-const bgm = new Audio('./assets/sound/bgm.mp3');
+const bgm = new Audio(bgmUrl);
 bgm.loop = true;
 let bgmStarted = false;
 
 bgm.volume = 0.2;
+
+export function stopBgm() {
+	bgm.pause();
+	bgm.currentTime = 0;
+}
 
 bgm.play().then(() => {
 	bgmStarted = true;
@@ -33,7 +41,7 @@ bgm.play().then(() => {
 });
 
 // --- "Got it" button handler ---
-const blobSound = new Audio('./assets/sound/blob.ogg');
+const blobSound = new Audio(blobUrl);
 const gotItBtn = document.querySelector("#left-container button");
 gotItBtn.addEventListener("click", () => {
 	blobSound.currentTime = 0;
