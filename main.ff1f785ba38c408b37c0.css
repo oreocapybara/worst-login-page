@@ -1,0 +1,509 @@
+:root {
+	--primary: #0A2947;
+	--secondary: #F3E4C9;
+	--text: #D3D4C0;
+	--brand: #8B5E3C;
+}
+
+body {
+	height: 100dvh;
+	width: 100dvw;
+	overflow: hidden;
+	font-family: 'Segoe UI', sans-serif;
+	background: var(--primary);
+	margin: 0;
+}
+
+#content {
+	height: 100%;
+	display: flex;
+	gap: 32px;
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+
+/* --- Utility --- */
+.hidden {
+	display: none !important;
+}
+
+/* --- Left Container (Instructions) --- */
+#left-container {
+	flex: 1;
+	max-width: 40%;
+	padding: 64px 64px 64px clamp(2rem, 10vw, 180px);
+	display: flex;
+	flex-direction: column;
+	transition: opacity 0.5s ease;
+	user-select: none;
+	gap: 32px;
+
+	h1 {
+		font-size:48px;
+		letter-spacing: 0.8px;
+		user-select: none;
+		color: var(--secondary);
+		margin: 0 0 32px;
+		animation: bounce 0.6s ease infinite alternate;
+	}
+
+	
+
+	p {
+		font-size: 24px;
+		line-height: 1.6;
+		color: var(--text);
+		margin: 0;
+		
+	}
+
+	button {
+		padding: 12px 64px;
+		font-size: 16px;
+		font-weight: 600;
+		border: none;
+		border-radius: 32px;
+		background: var(--brand);
+		color: var(--secondary);
+		cursor: pointer;
+		align-self: flex-start;
+		animation: subtle-blob 2s ease-in-out infinite;
+	}
+
+	button:hover {
+		background: #6B4530;
+		transform: scale(1.03);
+	}
+
+	button:active {
+		animation: none;
+		transform: scale(0.85);
+		transition: transform 0.06s ease-in;
+	}
+
+	button:focus-visible{
+		outline: solid 4px var(--brand);
+		outline-offset: 4px	;				
+	}
+
+	footer{
+		align-self:stretch;
+		text-align: center;
+		color: var(--text);
+
+		a{
+			color: var(--brand);
+			text-decoration: none;
+		}
+	}
+}
+
+@keyframes bounce {
+	from { transform: translateY(0); }
+	to { transform: translateY(-10px); }
+}
+
+@keyframes subtle-blob {
+
+	0%,
+	100% {
+		transform: scaleX(1) scaleY(1);
+	}
+
+	25% {
+		transform: scaleX(1.03) scaleY(0.97);
+	}
+
+	50% {
+		transform: scaleX(0.97) scaleY(1.03);
+	}
+
+	75% {
+		transform: scaleX(1.02) scaleY(0.98);
+	}
+}
+
+/* --- Right Container (Game Area) --- */
+#right-container {
+	flex: 2;
+	max-width: 60%;
+	height: 100%;
+	overflow: hidden;
+	position: relative;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: var(--secondary);
+	border-radius: 16px 0 0 16px;
+}
+
+#right-container::before {
+	content: "";
+	position: absolute;
+	inset: -50%;
+	width: 200%;
+	height: 200%;
+	background: url(/worst-login-page/b99bf25673277c7e11f0.svg) repeat;
+	background-size: 136px 136px;
+	opacity: 0.06;
+	pointer-events: none;
+	z-index: 0;
+	transform: rotate(36deg);
+}
+
+/* --- Capybara --- */
+#capybara {
+	position: relative;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#capybara-body {
+	position: relative;
+	background: url(/worst-login-page/a43c357117f5fab5b295.svg) no-repeat center / contain;
+	width: 480px;
+	height: 654px;
+	border-radius: 30px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: bold;
+	font-size: 1.2rem;
+}
+
+#grabbed-inputs {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+	width: 90%;
+
+	input{
+		flex: 1;
+		border: solid 4px black;
+		border-radius: 16px;
+		padding: 16px 16px;
+		font-size:16px;
+		
+	}
+
+	input:active, input:focus-visible{
+		border: solid 4px var(--brand);
+		outline-offset: 2px;
+		outline: solid 4px var(--secondary);
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	}
+
+	input:user-invalid{
+		border-color: indianred;
+		box-shadow: 0 0 8px rgba(231, 76, 60, 0.4);
+	}
+
+	input:user-valid:focus{
+      border-color: mediumseagreen;
+      box-shadow: 0 0 8px rgba(46, 204, 113, 0.4);
+  }
+
+
+
+
+}
+
+
+/* --- Capybara Active State --- */
+#capybara-body.capybara-active {
+	background: url(/worst-login-page/4c241fbd13adea15fc0f.svg) no-repeat center / contain;
+}
+
+/* --- Capybara Entrance Animation --- */
+@keyframes capy-entrance {
+	0% {
+		transform: translateY(-120vh);
+		opacity: 0;
+	}
+	8% {
+		opacity: 1;
+	}
+	50% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	62% {
+		transform: translateY(-40px);
+		opacity: 1;
+	}
+	74% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	82% {
+		transform: translateY(-15px);
+		opacity: 1;
+	}
+	90% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+	95% {
+		transform: translateY(-5px);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+.capy-hidden {
+	opacity: 0;
+	transform: translateY(-120vh);
+}
+
+.capy-entrance {
+	animation: capy-entrance 1.2s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+/* --- Capybara Animations --- */
+@keyframes capy-shake {
+	0%, 100% { transform: translateY(-20%) rotate(0deg); }
+	25% { transform: translateY(-20%) rotate(-3deg); }
+	75% { transform: translateY(-20%) rotate(3deg); }
+}
+
+.capy-shake {
+	animation: capy-shake 10ms ease;
+}
+
+@keyframes capy-wiggle {
+	0%, 100% { transform: translateY(-20%) scale(1); }
+	50% { transform: translateY(-20%) scale(1.05); }
+}
+
+.capy-wiggle {
+	animation: capy-wiggle 0.3s ease;
+}
+
+@keyframes capy-bounce {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(-5px); }
+}
+
+.capy-bouncing {
+	animation: capy-bounce 2s ease-in-out infinite;
+}
+
+/* --- Game Zone --- */
+#gamezone {
+	position: absolute;
+	inset: 0;
+	height: 100%;
+	pointer-events: none;
+}
+
+/* --- Moving Inputs --- */
+.moving-input {
+	position: fixed;
+	pointer-events: auto;
+	padding: 16px 32px;
+	font-size: 1rem;
+	border: 2px solid #8B6914;
+	border-radius: 32px;
+	background: white;
+	width: 260px;
+	cursor: pointer;
+	user-select: none;
+	animation: blob-wobble 0.8s ease-in-out infinite;
+}
+
+@keyframes blob-wobble {
+	0%, 100% { transform: scaleX(1.1) scaleY(0.7); }
+	25% { transform: scaleX(0.9) scaleY(0.75); }
+	50% { transform: scaleX(1.05) scaleY(0.65); }
+	75% { transform: scaleX(0.95) scaleY(0.7); }
+}
+
+.moving-input:focus {
+	outline: none;
+}
+
+.moving-input:hover {
+	box-shadow: 0 0 8px rgba(139, 105, 20, 0.4);
+}
+
+/* --- Grab Success --- */
+.grabbed {
+	animation: blob-expand 0.5s ease-out forwards;
+}
+
+@keyframes blob-expand {
+	0% { transform: scaleX(1.1) scaleY(0.7); }
+	40% { transform: scaleX(0.95) scaleY(1.1); }
+	70% { transform: scaleX(1.03) scaleY(0.97); }
+	100% { transform: scaleX(1) scaleY(1); }
+}
+
+/* --- Fall/Break Animation --- */
+@keyframes fall-break {
+	0% {
+		transform: translateY(0) rotate(0deg);
+		opacity: 1;
+	}
+	50% {
+		transform: translateY(200px) rotate(25deg);
+		opacity: 0.7;
+	}
+	100% {
+		transform: translateY(500px) rotate(45deg);
+		opacity: 0;
+	}
+}
+
+.falling {
+	animation: fall-break 0.8s ease-in forwards;
+	pointer-events: none;
+}
+
+/* --- Oops Text --- */
+#oops-text {
+	position: fixed;
+	top: 95%;
+	left: 70%;
+	transform: translate(-50%, -50%);
+	font-size: 3rem;
+	font-weight: bold;
+	color: #e74c3c;
+	z-index: 500;
+	pointer-events: none;
+	animation: oops-pop 0.6s ease-out forwards;
+}
+
+@keyframes oops-pop {
+	0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+	50% { transform: translate(-50%, -50%) scale(1.3); opacity: 1; }
+	100% { transform: translate(-50%, -50%) scale(1); opacity: 0; }
+}
+
+/* --- Submit Button --- */
+#submit {
+	position: fixed;
+	padding: 8px 64px;
+	font-size: 1rem;
+	font-weight: bold;
+	background: #4a9c5e;
+	color: white;
+	border: none;
+	border-radius: 50px;
+	cursor: pointer;
+	z-index: 900;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	animation: blob-pulse 1s ease-in-out infinite;
+}
+
+#submit:hover {
+	background: #3a7c4e;
+}
+#submit:focus, #submit:focus-visible{
+	outline: solid 4px var(--brand);
+	outline-offset: 2px	;
+}
+
+#submit:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+@keyframes blob-pulse {
+	0%, 100% { transform: scaleX(1) scaleY(1); box-shadow: 0 4px 12px rgba(74, 156, 94, 0.3); }
+	25% { transform: scaleX(1.08) scaleY(0.92); box-shadow: 0 5px 16px rgba(74, 156, 94, 0.4); }
+	50% { transform: scaleX(0.94) scaleY(1.08); box-shadow: 0 6px 20px rgba(74, 156, 94, 0.6); }
+	75% { transform: scaleX(1.05) scaleY(0.95); box-shadow: 0 5px 16px rgba(74, 156, 94, 0.4); }
+}
+
+.home-view {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: var(--primary);
+	font-family: 'Segoe UI', sans-serif;
+	color: var(--secondary);
+	text-align: center;
+	padding: 2rem;
+	position: relative;
+	overflow: hidden;
+}
+
+.home-view::before {
+	content: '';
+	position: fixed;
+	top: -50%;
+	left: -50%;
+	width: 200%;
+	height: 200%;
+	background-image: url(/worst-login-page/b99bf25673277c7e11f0.svg);
+	background-size: 164px 164px;
+	background-repeat: repeat;
+	opacity: 0.05;
+	pointer-events: none;
+	z-index: 0;
+	transform: rotate(30deg);
+}
+
+.home-view > * {
+	position: relative;
+	z-index: 1;
+}
+
+.home-view h1 {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+	animation: bounce 0.6s ease infinite alternate;
+}
+
+.home-view p {
+	font-size: 1.3rem;
+	margin-bottom: 2rem;
+	opacity: 0.9;
+}
+
+.home-view a {
+	padding: 0.75rem 2rem;
+	background: var(--brand);
+	color: var(--secondary);
+	text-decoration: none;
+	border-radius: 8px;
+	font-weight: bold;
+	font-size: 1.1rem;
+}
+
+.home-view a:hover { background: var(--secondary); color: var(--brand); }
+
+@keyframes bounce {
+	from { transform: translateY(0); }
+	to { transform: translateY(-10px); }
+}
+
+.confetti {
+	position: fixed;
+	top: -10px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	animation: confetti-fall 3s ease-in infinite;
+	pointer-events: none;
+}
+
+@keyframes confetti-fall {
+	0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+	100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
